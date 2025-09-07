@@ -2,11 +2,11 @@ use std::{fs, str::FromStr};
 
 pub fn read_temp(device: &str) -> Option<f32> {
     fs::read_to_string(device)
-        .inspect_err(|e| eprintln!("Error getting CPU temp: {e}"))
-        .map(|content| content.trim().to_string())
-        .map(|s| f32::from_str(&s).unwrap())
-        .map(|num| num / 1000.0)
-        .ok()
+    .inspect_err(|e| eprintln!("Error getting CPU temp: {}", e))
+    .map(|content| content.trim().to_string())
+    .map(|s| f32::from_str(&s).unwrap())
+    .map(|num| num / 1000.0)
+    .ok()
 }
 
 pub fn default_cpu_device() -> Option<String> {

@@ -24,7 +24,7 @@ pub trait FromConfigFile {
     /// Load ourselves from the configuration file located at @path
     fn from_config_file<P: AsRef<Path>>(path: P) -> Result<Self>
     where
-        Self: Sized;
+    Self: Sized;
 }
 
 impl<T: DeserializeOwned> FromConfigFile for T {
